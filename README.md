@@ -222,6 +222,15 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
+#### v1.0.6
+- Removed deprecated files: colideact7.css, colideact7_nohover.css, and all files associated with the python compiler.
+- Added godtier dirk icon to post retcon dirk.
+- Added 3553 to Jade's timeline.
+- Made 9349 use regular Jane's icon.
+- Added Jane (Past) as a caption for 6117 -> 6013 Jane.
+- Added 3583 to Terezi's timeline for consistency.
+- Made Aranea use godtier-vriska icon when wearing her god hood for consistency with Meenah.
+
 #### v1.0.5
 - Changed Terezi & Karkat seeing Aradia explode from after [S] Reunite with loving Wife and Daughter to after Terezi punches Karkat
 - Moved Terezi's reaction to John's reunion before she begins trolling John

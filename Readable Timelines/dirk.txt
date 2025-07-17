@@ -183,6 +183,8 @@ Create ARquiusprite
 	Create ARquiusprite
 	9349
 	
+	Image: godtier-dirk.png
+	
 	Enter window portal, shot by Vriska
 	Arrive on frog platform
 	Be introduced to Dave
