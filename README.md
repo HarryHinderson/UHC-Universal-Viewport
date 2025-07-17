@@ -230,6 +230,8 @@ output. The main contents of the `json`{.verbatim} variable is:
 - Added Jane (Past) as a caption for 6117 -> 6013 Jane.
 - Added 3583 to Terezi's timeline for consistency.
 - Made Aranea use godtier-vriska icon when wearing her god hood for consistency with Meenah.
+- Removed Aradia's Past Doomed Counterpart
+- Made Aradia (Doomed) use aradiabot.png for the entirety of her dreambubble appearence to disambiguate from Aradia (Past)
 
 #### v1.0.5
 - Changed Terezi & Karkat seeing Aradia explode from after [S] Reunite with loving Wife and Daughter to after Terezi punches Karkat

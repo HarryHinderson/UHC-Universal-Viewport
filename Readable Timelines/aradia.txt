@@ -6,10 +6,7 @@ Group: Beta Trolls
 Archaeology
 Name: Aradia (Past)
 5479-5490
-======>
-	Caption: Aradia (Doomed)
-	Image*: aradiabot.png
-	~ Aradia (Doomed) @ dream-bubble
+
 Name: Aradia
 
 FLARP
@@ -69,8 +66,7 @@ Jack Noir arrives
 
 	@dream-bubble
 	Explore dream bubble
-	5473-5490 : aradia.png
-	5491-5513
+	5473-5513
 	
 	Caliborn: Enter
 	7161
