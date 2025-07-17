@@ -259,6 +259,7 @@ Apologise for giving Bilious Slick cancer
 
 ======>
 	Name: Karkat (Doomed)
+	Caption: Karkat (Doomed)
 	5713
 
 See Terezi kill Vriska
