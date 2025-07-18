@@ -103,7 +103,7 @@ iRRRRRRRRECONCILA8LE
 	# tavrisprite.txt leads into vriska.txt as well as tavros.txt
 	# Abuse timeline split to avoid duplicate tavrisprite entry to 6738 after tavrisplode
 	Reconcile with Vriska
-	6738-6740
+	6737-6740
 	
 	Be found by John
 	Fight for ring
