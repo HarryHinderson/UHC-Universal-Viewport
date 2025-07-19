@@ -85,7 +85,16 @@ Notice sleepwalking Roxy
 
 ~ Fefetasprite
 
-	7661
-	Be in Vriska's crew
-	7848-7914
-	7923-7946
+!
+
+Fefetasplode
+7661
+
+Ministrife
+7327
+
+Be in Vriska's crew
+7848-7914
+7923-7946
+
+~ Nepetasprite
