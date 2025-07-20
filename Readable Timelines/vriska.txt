@@ -320,6 +320,11 @@ iRRRRRRRRECONCILA8LE
 6729-6733
 ~ Tavrisprite
 
+!
+
+Tavrisplode
+6737
+
 Decide to fuck shit up
 6737-6740
 
