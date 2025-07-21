@@ -222,6 +222,14 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
+#### v1.0.7
+- Added Feferi and Nepeta to the ministrife
+- Added caption for Karkat on page 5926
+- Gave Alt!Calliope her own name and icon
+- Added pages 9718 and 9719 to Nepeta's timeline
+- Characters now branch from Spritesplosions during the page in which they Spritesplode
+- Added Nepeta and Feferi to Ministrife
+
 #### v1.0.6
 - Removed deprecated files: colideact7.css, colideact7_nohover.css, and all files associated with the python compiler.
 - Added godtier dirk icon to post retcon dirk.
