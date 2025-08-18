@@ -222,6 +222,11 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
+#### v1.0.8
+- Updated Alt!Calliope's icon on the homepage
+- Updated the Sovereign Slayer's icon after Collide
+- Fixed page 2491 being on Bro's timeline multiple times
+
 #### v1.0.7
 - Added Feferi and Nepeta to the ministrife
 - Added caption for Karkat on page 5926
