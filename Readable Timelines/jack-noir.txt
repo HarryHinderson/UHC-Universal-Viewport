@@ -128,7 +128,8 @@ Enter B2 universe
 	Land in remains of Prospit
 	Prepare to fight PM
 	9967-9981
-	
+
+	Image: spades.png
 	Collide
 	Fight PM
 	Be interrupted by Jade

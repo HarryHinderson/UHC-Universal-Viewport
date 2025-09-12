@@ -15,6 +15,8 @@ Group: Alpha Kids
 Wake up from dream
 6117
 
+Caption: Jane (Past)
+
 Universe starts up
 Play piano
 6013
@@ -99,7 +101,7 @@ Talk with Calliope, Roxy, Jake
 	Caption: Jane (Retcon)
 	Meet Tavrosprite
 	@retcon
-	9349 : godtier-jane.png
+	9349
 
 	Image: godtier-jane.png
 	
@@ -290,7 +292,7 @@ Go back to Act 6 Act 5 Act 1
 
 7611-7677: tricksterjane.png
 
-7678-7680
+7678-7681
 
 Act 6 Act 5 Act 1 x2 combo
 7688-7692-2

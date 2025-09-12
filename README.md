@@ -222,6 +222,39 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
+#### v1.0.8
+- Updated Alt!Calliope's icon on the homepage
+- Updated the Sovereign Slayer's icon after Collide
+- Fixed page 2491 being on Bro's timeline multiple times
+
+#### v1.0.7
+- Added Feferi and Nepeta to the ministrife
+- Added caption for Karkat on page 5926
+- Gave Alt!Calliope her own name and icon
+- Added pages 9718 and 9719 to Nepeta's timeline
+- Characters now branch from Spritesplosions during the page in which they Spritesplode
+- Added Nepeta and Feferi to Ministrife
+
+#### v1.0.6
+- Removed deprecated files: colideact7.css, colideact7_nohover.css, and all files associated with the python compiler.
+- Added godtier dirk icon to post retcon dirk.
+- Added 3553 to Jade's timeline.
+- Made 9349 use regular Jane's icon.
+- Added Jane (Past) as a caption for 6117 -> 6013 Jane.
+- Added 3583 to Terezi's timeline for consistency.
+- Made Aranea use godtier-vriska icon when wearing her god hood for consistency with Meenah.
+- Removed Aradia's Past Doomed Counterpart
+- Made Aradia (Doomed) use aradiabot.png for the entirety of her dreambubble appearence to disambiguate from Aradia (Past)
+
+#### v1.0.5
+- Changed Terezi & Karkat seeing Aradia explode from after [S] Reunite with loving Wife and Daughter to after Terezi punches Karkat
+- Moved Terezi's reaction to John's reunion before she begins trolling John
+- Fixed Doc Scratch contacting Vriska
+
+#### v1.0.4
+- Added 7681 to Jane's timeline due to 7680 not having any links
+- Fixed position of Beta Kids' link in the homepage
+
 #### v1.0.3
 - Added Brobot to the homepage
 - Fixed The Handmaid's homepage link

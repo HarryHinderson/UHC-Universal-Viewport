@@ -320,8 +320,13 @@ iRRRRRRRRECONCILA8LE
 6729-6733
 ~ Tavrisprite
 
+!
+
+Tavrisplode
+6737
+
 Decide to fuck shit up
-6738-6740
+6737-6740
 
 Meet John
 7284-7299

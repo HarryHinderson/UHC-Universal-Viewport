@@ -11,10 +11,14 @@ Pretend to be Vriska
 Drop pretence
 Offer to heal Terezi's eyes
 Go to see Meenah
-6667-6678
+6667-6675
+Image: godtier-vriska.png
+6676-6678
+Image: vriska.png
 
 Visit Jake
 Notice Jake's flushed attraction
+6777
 6825-6831
 
 DD: Ascend More Casually
@@ -35,7 +39,7 @@ Continue expositing to Meenah
 7298
 
 Ministrife
-7327
+7327 : godtier-vriska.png
 
 Join Vriska's crew
 7848-7914

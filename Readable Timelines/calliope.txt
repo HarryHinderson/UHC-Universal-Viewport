@@ -178,7 +178,10 @@ Witness John meeting Dad
 ACT 7
 10027
 
+	Name: Alt-Calliope
 	Colour: #FF0000
+	Image: alt-calliope.png
+
 	Welcome Jade back
 	Talk with Calliope in private
 	Remove Calliope's disguise
