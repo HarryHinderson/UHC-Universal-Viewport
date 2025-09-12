@@ -222,7 +222,7 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
-#### v1.0.8
+#### v1.0.9
 - Added Vriska to page 4022
 - Made icon rendering consistent
 
