@@ -1,5 +1,8 @@
 .povmap { 
   background: #5a5a5a;
+}
+
+.povmap .panel {
   image-rendering: pixelated;
 }
 
