@@ -148,7 +148,7 @@ module.exports = {
         const tereziRetconPages = [8948, 8132, 3938, 4476, 5270, 5610, 5622, 5736].map(page => toPageString(page))
 
         // For each page in homestuck
-        for (let i = 1901; i < 10028; i++) {
+        for (let i = 1901; i <= 10030; i++) {
           const pageString = toPageString(i)
           // if the page exists (prevents certain errors)
           if (archive.mspa.story[pageString] && povData.timelines[String(i)]) {
@@ -408,7 +408,7 @@ module.exports = {
                       `
                     } else if (credits) {
                   creditsStyle += `
-                    /* Act 7 */
+                    /* Credits */
                     div[data-pageid*="010030"] .nextArrow div:first-child {
                       margin-bottom: 20px;
                     }
@@ -424,16 +424,16 @@ module.exports = {
                       position: absolute;
                       top: 10px;
                       right: calc(100% + 5px);
-                      background: white;
+                      background: black;
                       border: solid black 1px;
                       font-size: 12px;
                       padding: 2px;
                       white-space: nowrap;
-                      /* color: black; */
+                      /* color: white; */
                     }
                       div[data-pageid*="010030"] .nextArrow div:nth-last-child(${linkIndex}) a {
                       color: ${colour} !important;
-                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
+                      ${colour == "#000000" ? "text-shadow: 1px 1px 0px black;" : ""}
                       ${linkData[4][k][0] == "010030" ? "display: none;" : ""}
                     }
                       div[data-pageid*="010030"] .nextArrow div:nth-last-child(${linkIndex}) p::Before {
@@ -444,7 +444,7 @@ module.exports = {
                       div[data-pageid*="010030"] .nextArrow div:nth-last-child(${linkIndex}) p::After {
                       ${linkData[4][k][0] == "010030" ? `content: "End of ${person}'s Timeline.";` : ""}
                       color: ${colour};
-                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
+                      ${colour == "#000000" ? "text-shadow: 1px 1px 0px black;" : ""}
                     }
                       `
                 }
@@ -458,7 +458,7 @@ module.exports = {
         }
 
         // Store collide, credits, and act 7 style to be used on next start
-        api.store.set("collideAct7Style", collideStyle + act7Style + creditsStyle)
+        api.store.set("collideAct7CreditsStyle", collideStyle + act7Style + creditsStyle)
 
         archive.tweaks.modHomeRowItems.push({
           href: "/viewport",

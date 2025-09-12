@@ -498,6 +498,9 @@ Image*: godtier-dave.png
 	Credits
 	10030
 
+	Masterpiece
+	9318-9323
+
 Arrive on meteor
 Level up
 Meet trolls

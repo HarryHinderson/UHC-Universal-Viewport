@@ -478,6 +478,9 @@ Image*: godtier-rose.png
 	Credits
 	10030
 
+	Masterpiece
+	9318-9323
+
 Meet friends
 6231
 
