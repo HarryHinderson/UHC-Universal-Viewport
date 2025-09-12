@@ -222,6 +222,10 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
+#### v1.0.9
+- Added Vriska to page 4022
+- Made icon rendering consistent
+
 #### v1.0.8
 - Updated Alt!Calliope's icon on the homepage
 - Updated the Sovereign Slayer's icon after Collide
