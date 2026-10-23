@@ -226,6 +226,7 @@ output. The main contents of the `json`{.verbatim} variable is:
 - Fixed “Disable Trolls’ Ancestors timelines” setting (Model was previously "Trolls' Ancestors", as opposed to "Beta Trolls' Ancestors")
 - Fixed Equiussprite's link on the map page (Was 0007547 instead of 007545)
 - Fixed the start of Equiusprite's timeline (Was 007547 instead of 007545)
+- Changed license from MIT to GPL-2.0
 
 #### v1.0.9
 - Added Vriska to page 4022
