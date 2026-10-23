@@ -51,7 +51,7 @@ module.exports = {
       label: "Disable Alpha Kids' Guardians timelines",
     },
     {
-      model: "Trolls' Ancestors",
+      model: "Beta Trolls' Ancestors",
       label: "Disable Trolls' Ancestors timelines",
     },
     {

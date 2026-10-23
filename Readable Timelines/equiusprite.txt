@@ -4,12 +4,12 @@ Image: equiusprite.png
 Group: Alpha Kids' Sprites
 
 Be created
-7544
+7545
 
 ==>
 	Caption: Equiusprite (retcon)
 	~ ARquiusprite @ retcon
 
-7545-7554
+7546-7554
 
 ~ ARquiusprite @ gamzee
