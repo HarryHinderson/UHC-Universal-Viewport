@@ -222,6 +222,9 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
+##### v1.0.9.2
+- Fixed Collide/Act 7 CSS so you no longer have to reload for them to work.
+
 ##### v1.0.9.1
 - Fixed “Disable Trolls’ Ancestors timelines” setting (Model was previously "Trolls' Ancestors", as opposed to "Beta Trolls' Ancestors")
 - Fixed Equiussprite's link on the map page (Was 0007547 instead of 007545)
