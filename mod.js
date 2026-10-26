@@ -1,5 +1,157 @@
 let toPageString = pageNumber => pageNumber < 10000 ? `00${pageNumber}` : `0${pageNumber}`
 
+// Build the Collide and Act 7 stylesheet before UHC reads the `styles` list.
+// Previously, this was generated in edit() and saved for the *next* launch.
+function buildSpecialPageStyles(povData, api) {
+  let collideStyle = ""
+  let act7Style = ""
+
+  for (const pageNumber of [9987, 10027]) {
+    const pageString = toPageString(pageNumber)
+    const pageLinkDataList = povData.timelines[String(pageNumber)] || []
+    const collide = pageNumber === 9987
+    const act7 = pageNumber === 10027
+    const isEnabled = linkData => !api.store.get(povData.groups[linkData[3]])
+
+    // Match edit()'s insertion order. The last added link has nth-last-child(1),
+    // so CSS rules must count backwards from the total number of visible links.
+    let linkIndex = 1
+    for (const linkData of pageLinkDataList) {
+      if (isEnabled(linkData)) {
+        // Also match edit()'s missing-next-page fallback.
+        if (!linkData[4][0]) linkData[4][0] = [pageNumber]
+        linkIndex += linkData[4].length
+      }
+    }
+
+    for (const linkData of pageLinkDataList) {
+      for (let k = 0; k < linkData[4].length; k++) {
+        if (isEnabled(linkData)) {
+          linkIndex -= 1
+          let person = povData.peoplenames[linkData[0]]
+          let colour = povData.colours[linkData[1]]
+          let caption = linkData[4][k][2]
+          let image = linkData[4][k][3]
+
+          if (!caption) caption = person
+          if (!image) image = povData.images[linkData[2]]
+          else image = povData.images[image]
+
+          if (collide) {
+                  collideStyle += `
+                    /* Collide */
+                      div[data-pageid*="${pageString}"] .nextArrow div:nth-last-child(${linkIndex}) {
+                      position: relative;
+                    }
+                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex})${api.store.get("disableHover") ? "" : ":hover"}:before {
+                      content: "${caption}";
+                      position: absolute;
+                      top: 10px;
+                      right: calc(100% + 5px);
+                      background: white;
+                      border: solid black 1px;
+                      font-size: 12px;
+                      padding: 2px;
+                      white-space: nowrap;
+                      color: black;
+                    }
+                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex}) a {
+                      color: ${colour} !important;
+                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
+                      ${linkData[4][k][0] == "009987" ? "display: none;" : ""}
+                    }
+                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex}) p::Before {
+                      content: url("assets://images/${image}");
+                      display: inline-block;
+                      transform: translateY(5px);
+                    }
+                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex}) p::After {
+                      ${linkData[4][k][0] == "009987" ? `content: "End of ${person}'s Timeline.";` : ""}
+                      color: ${colour};
+                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
+                    }
+                  `
+          } else if (act7) {
+                  act7Style += `
+                    /* Act 7 */
+                    div[data-pageid*="010027"] .nextArrow div:first-child {
+                      margin-bottom: 20px;
+                    }
+                    div[data-pageid*="010027"] .nextArrow div + div {
+                      font-size: x-large !important;
+                    }
+
+                      div[data-pageid*="${pageString}"] .nextArrow div:nth-last-child(${linkIndex}) {
+                      position: relative;
+                    }
+                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex})${api.store.get("disableHover") ? "" : ":hover"}:before {
+                      content: "${caption}";
+                      position: absolute;
+                      top: 10px;
+                      right: calc(100% + 5px);
+                      background: white;
+                      border: solid black 1px;
+                      font-size: 12px;
+                      padding: 2px;
+                      white-space: nowrap;
+                      /* color: black; */
+                    }
+                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex}) a {
+                      color: ${colour} !important;
+                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
+                      ${linkData[4][k][0] == "010027" ? "display: none;" : ""}
+                    }
+                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex}) p::Before {
+                      content: url("assets://images/${image}");
+                      display: inline-block;
+                      transform: translateY(5px);
+                    }
+                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex}) p::After {
+                      ${linkData[4][k][0] == "010027" ? `content: "End of ${person}'s Timeline.";` : ""}
+                      color: ${colour};
+                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
+                    }
+                      `
+          }
+        }
+      }
+    }
+  }
+
+  // UHC does not accept an empty `body` value.
+  return collideStyle + act7Style || "a"
+}
+
+// UHC compiles `styles[].body` asynchronously and caches its result by the
+// *legacy* `version` field (not by `modVersion`). That means a newly generated
+// stylesheet can be missing on the first render, or an old one can be reused.
+// Apply these two special-page styles directly to the document as well, so
+// they are available without waiting for UHC's stylesheet compiler/cache.
+function installSpecialPageStyles(css) {
+  if (typeof document === "undefined" || !document.head) return
+
+  const id = "ultimate-viewport-collide-act7"
+  let style = document.getElementById(id)
+  if (!style) {
+    style = document.createElement("style")
+    style.id = id
+    document.head.appendChild(style)
+  }
+  // Replace previous rules if the mod is re-evaluated with new settings.
+  if (style.textContent !== css) style.textContent = css
+}
+
+// UHC's stylecache uses the legacy `version` key. Make it depend on the
+// generated CSS, so hiding a group or changing the hover setting never
+// accidentally retrieves another configuration's cached stylesheet.
+function specialStyleCacheVersion(css) {
+  let hash = 2166136261
+  for (let i = 0; i < css.length; i++) {
+    hash = Math.imul(hash ^ css.charCodeAt(i), 16777619)
+  }
+  return `1.0-css-${(hash >>> 0).toString(36)}`
+}
+
 module.exports = {
   title: "Ultimate Viewport", 
   author: "<a href='https://github.com/madman-bob/Homestuck-POV-Cam'>madman-bob</a>, ported by <a href='https://flaringk.github.io/Portfolio/'>FlaringK</a>, forked by Harry Hinderson",
@@ -112,8 +264,16 @@ module.exports = {
     api.logger.info(povData)
 
     const povPage = api.readFile("./homepage.html")
-    
+
+    // This happens before UHC mounts the story pages. Do not depend on its
+    // asynchronous CSS compilation to make Collide / Act 7 look correct.
+    const specialStyles = buildSpecialPageStyles(povData, api)
+    installSpecialPageStyles(specialStyles)
+
     return {
+      // Used ONLY for UHC's compiled-CSS cache key (legacy API field).
+      // Keep modVersion above intact for the mod's displayed version.
+      version: specialStyleCacheVersion(specialStyles),
 
       browserPages: {
         "VIEWPORT": {
@@ -128,8 +288,8 @@ module.exports = {
       
       styles: [
         {
-          // Set collide & act 7 style manually
-          body: api.store.get("collideAct7Style", "a") // mod must be restarted twice to update; fallback is "a" since "" crashes TUHC
+          // The UHC loader also uses this as a fallback for DOM-less contexts.
+          body: specialStyles
         },
         {
           source: "./povmap.css"
@@ -141,8 +301,6 @@ module.exports = {
 
       edit(archive) {
 
-        let collideStyle = ""
-        let act7Style = ""
         let hideOriginalLink = api.store.get("hideOriginalLink", false)
         const tereziRetconPages = [8948, 8132, 3938, 4476, 5270, 5610, 5622, 5736].map(page => toPageString(page))
 
@@ -329,81 +487,6 @@ module.exports = {
                       ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
                     }
                   `
-                } else if (collide) {
-                  collideStyle += `
-                    /* Collide */
-                      div[data-pageid*="${pageString}"] .nextArrow div:nth-last-child(${linkIndex}) {
-                      position: relative;
-                    }
-                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex})${api.store.get("disableHover") ? "" : ":hover"}:before {
-                      content: "${caption}";
-                      position: absolute;
-                      top: 10px;
-                      right: calc(100% + 5px);
-                      background: white;
-                      border: solid black 1px;
-                      font-size: 12px;
-                      padding: 2px;
-                      white-space: nowrap;
-                      color: black;
-                    }
-                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex}) a {
-                      color: ${colour} !important;
-                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
-                      ${linkData[4][k][0] == "009987" ? "display: none;" : ""}
-                    }
-                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex}) p::Before {
-                      content: url("assets://images/${image}");
-                      display: inline-block;
-                      transform: translateY(5px);
-                    }
-                      div[data-pageid*="009987"] .nextArrow div:nth-last-child(${linkIndex}) p::After {
-                      ${linkData[4][k][0] == "009987" ? `content: "End of ${person}'s Timeline.";` : ""}
-                      color: ${colour};
-                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
-                    }
-                  `
-                } else if (act7) {
-                  act7Style += `
-                    /* Act 7 */
-                    div[data-pageid*="010027"] .nextArrow div:first-child {
-                      margin-bottom: 20px;
-                    }
-                    div[data-pageid*="010027"] .nextArrow div + div {
-                      font-size: x-large !important;
-                    }
-
-                      div[data-pageid*="${pageString}"] .nextArrow div:nth-last-child(${linkIndex}) {
-                      position: relative;
-                    }
-                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex})${api.store.get("disableHover") ? "" : ":hover"}:before {
-                      content: "${caption}";
-                      position: absolute;
-                      top: 10px;
-                      right: calc(100% + 5px);
-                      background: white;
-                      border: solid black 1px;
-                      font-size: 12px;
-                      padding: 2px;
-                      white-space: nowrap;
-                      /* color: black; */
-                    }
-                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex}) a {
-                      color: ${colour} !important;
-                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
-                      ${linkData[4][k][0] == "010027" ? "display: none;" : ""}
-                    }
-                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex}) p::Before {
-                      content: url("assets://images/${image}");
-                      display: inline-block;
-                      transform: translateY(5px);
-                    }
-                      div[data-pageid*="010027"] .nextArrow div:nth-last-child(${linkIndex}) p::After {
-                      ${linkData[4][k][0] == "010027" ? `content: "End of ${person}'s Timeline.";` : ""}
-                      color: ${colour};
-                      ${colour == "#FFFFFF" ? "text-shadow: 1px 1px 0px black;" : ""}
-                    }
-                      `
                 }
               }
             }
@@ -413,9 +496,6 @@ module.exports = {
 
           }
         }
-
-        // Store collide and act 7 style to be used on next start
-        api.store.set("collideAct7Style", collideStyle + act7Style)
 
         archive.tweaks.modHomeRowItems.push({
           href: "/viewport",
