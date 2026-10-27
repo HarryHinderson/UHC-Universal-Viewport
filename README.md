@@ -222,6 +222,9 @@ output. The main contents of the `json`{.verbatim} variable is:
 
 ## Changelog
 
+### v1.1
+- Fixed Vriska false timeline ending on page 6737
+
 ##### v1.0.9.2
 - Fixed Collide/Act 7 CSS so you no longer have to reload for them to work.
 
